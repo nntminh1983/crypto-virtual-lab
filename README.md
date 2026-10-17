@@ -12,6 +12,7 @@ Website mô phỏng tĩnh cho môn **Mã hóa thông tin nâng cao (COM608)**, d
 | 06 Lượng tử | Bài 10 | Ba kính phân cực; qubit; BB84 với Eve; Shor; Grover |
 
 ## Cách dùng
+- **Địa chỉ công khai:** https://nntminh1983.github.io/crypto-virtual-lab/ (GitHub Pages, repo `nntminh1983/crypto-virtual-lab`, nhánh `main`).
 - Mở `index.html` bằng trình duyệt (không cần máy chủ, không cần mạng sau khi tải phông chữ lần đầu).
 - Đường dẫn sâu: `index.html#m2-sdes` mở thẳng tab S-DES của mô-đun 2. Nút **Tối/Sáng** đổi giao diện; trang nhớ tab và mô-đun đang mở.
 - Mỗi tab có nút **Ví dụ trong bài giảng** (preset khớp slide) và bảng **các bước tính** dưới hình.
@@ -25,6 +26,12 @@ assets/m1.js … m6.js  sáu mô-đun, mỗi tệp tự đăng ký các tab bằ
 _build/               công cụ phát triển: AGENT.md (brief), jscheck.py (kiểm cú pháp), selftest.sh (dựng mọi tab),
                       build_artifact.py (tạo bản artifact không khung HTML), shots/ (ảnh chụp)
 ```
+
+## Cập nhật bản công khai
+```
+git add -A && git commit -m "mô tả thay đổi" && git push
+```
+GitHub Pages dựng lại sau khoảng một phút.
 
 ## Kiểm tra sau khi sửa
 ```
