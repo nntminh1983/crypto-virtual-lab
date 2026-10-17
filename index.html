@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22%3E%3Crect width=%22100%22 height=%22100%22 rx=%2218%22 fill=%22%239A6A12%22/%3E%3Ctext x=%2250%22 y=%2268%22 font-size=%2254%22 text-anchor=%22middle%22 fill=%22white%22 font-family=%22monospace%22 font-weight=%22bold%22%3E%E2%8A%95%3C/text%3E%3C/svg%3E">
+<title>Phòng Lab Mã hóa COM608</title>
+<meta name="description" content="Mô phỏng tương tác cho môn Mã hóa thông tin nâng cao COM608: sáu mô-đun gom trọn mười bài giảng, dùng đúng các ví dụ số trong slide.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@400;500;600;700&family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=JetBrains+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+<header class="top">
+  <span class="code">COM608</span>
+  <span class="name">Phòng Lab Mã hóa</span>
+  <span class="sub">Mã hóa thông tin nâng cao · Khoa Đào tạo Sau đại học</span>
+  <span class="sp"></span>
+  <button class="tbtn" id="theme" type="button">Tối</button>
+</header>
+
+<div class="shell">
+  <nav class="rail" id="rail" aria-label="Mô-đun mô phỏng"><div class="railttl">Mô-đun mô phỏng</div></nav>
+  <main id="main">
+
+  <!-- ======================= TRANG CHỦ ======================= -->
+  <section class="mod home" id="m0">
+    <div class="hero">
+      <h1>Sáu mô phỏng cho <em>mười</em> bài giảng</h1>
+      <p class="lede">Mỗi mô-đun gom hai đến ba bài giảng thành một mô hình chạy trực tiếp trên trình duyệt. Mọi con số đều được tính từ công thức trong slide, không phải hình vẽ sẵn: đổi một tham số, cả bảng bước tính, hình vẽ và biểu đồ cùng cập nhật. Các ví dụ mặc định là đúng ví dụ đã dùng trong bài giảng, nên kết quả trên màn hình khớp với kết quả trên slide.</p>
+    </div>
+    <div class="legend" aria-label="Quy ước màu">
+      <span style="--c:var(--pt)">Bản rõ / Alice</span>
+      <span style="--c:var(--key)">Khóa / tham số bí mật</span>
+      <span style="--c:var(--ct)">Bản mã</span>
+      <span style="--c:var(--eve)">Eve, Mallory, lỗi</span>
+      <span style="--c:var(--ok)">Kiểm tra đúng</span>
+      <span style="--c:var(--aqua)">Bob / kênh truyền</span>
+    </div>
+    <div class="grid6" id="cards"></div>
+    <div class="teach">
+      <h3>Cách dùng khi giảng</h3>
+      <ul>
+        <li><b>Bắt đầu từ ví dụ trong slide.</b> Mỗi tab mở sẵn đúng bộ số đã dùng trên lớp (HELLO với k = 3, S-DES với khóa 1010000010, RSA với p = 61, q = 53, mã chập (7, 5) với tin 1011…). Hãy hỏi học viên dự đoán kết quả trước khi đổi tham số.</li>
+        <li><b>Đổi một thứ, nhìn mọi thứ.</b> Lật một bit bản rõ của S-DES hay AES rồi đếm số bit bản mã thay đổi; cho Eve chặn 50 % photon trong BB84 rồi xem QBER; kéo p của kênh BSC để xem Hamming còn cứu được đến đâu.</li>
+        <li><b>Mọi kết quả đều có bảng bước tính.</b> Khi học viên thắc mắc một con số, mở phần “các bước” ngay dưới hình: từng dòng là một phép toán trung gian, cùng ký hiệu với slide.</li>
+        <li><b>Chạy không cần mạng.</b> Trang là tệp tĩnh; có thể mở từ USB, chiếu máy chiếu hoặc gửi đường dẫn cho học viên tự luyện tập.</li>
+      </ul>
+      <p class="src">Nguồn công thức và ví dụ: slide Bài 1–10 của môn học; Trappe &amp; Washington, <i>Introduction to Cryptography with Coding Theory</i>; FIPS 197 (AES); van Tilborg, <i>Coding Theory</i>.</p>
+    </div>
+  </section>
+
+  <!-- ======================= M1 : SỐ HỌC MODULO & MẬT MÃ CỔ ĐIỂN ======================= -->
+  <section class="mod" id="m1">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 1</span><span class="chip k">Bài 2</span><span class="chip k">Bài 3</span><span class="chip">Trappe ch. 2–3</span></div>
+      <h2>Số học modulo và các hệ mật mã cổ điển</h2>
+      <p class="lede">Từ nhóm Z<sub>n</sub>, định lý Euler và nghịch đảo modulo tới Caesar, Affine, Vigenère, Hill, Playfair; phân tích tần suất để phá mã thay thế; bản mã dùng một lần và các bộ sinh dòng khóa LCG, BBS, LFSR.</p>
+    </header>
+  </section>
+
+  <!-- ======================= M2 : MÃ KHỐI ======================= -->
+  <section class="mod" id="m2">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 4</span><span class="chip k">Bài 5 (phần A)</span><span class="chip">FIPS 46 · FIPS 197</span></div>
+      <h2>Mã khối: giao thức ba bước, Feistel, S-DES, DES và AES</h2>
+      <p class="lede">Trao khóa bằng lũy thừa modulo giao hoán; mạng Feistel và thuật toán S-DES tính được bằng tay; hiệu ứng thác lũ; AES-128 từng lớp SubBytes, ShiftRows, MixColumns, AddRoundKey trên vector chuẩn FIPS-197; vì sao không dùng chế độ ECB.</p>
+    </header>
+  </section>
+
+  <!-- ======================= M3 : KHÓA CÔNG KHAI ======================= -->
+  <section class="mod" id="m3">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 5 (phần B)</span><span class="chip k">Bài 6</span><span class="chip">Trappe ch. 6–9</span></div>
+      <h2>Khóa công khai: RSA, Diffie–Hellman, ElGamal, hàm băm và chữ ký số</h2>
+      <p class="lede">Sinh khóa RSA và giải mã nhanh bằng CRT; tấn công Fermat và số mũ nhỏ; trao khóa Diffie–Hellman và kẻ đứng giữa; ElGamal và rủi ro dùng lại k; hiệu ứng tuyết lở của SHA-256, nghịch lý ngày sinh; chữ ký RSA, ElGamal, DSA và sự cố lộ khóa.</p>
+    </header>
+  </section>
+
+  <!-- ======================= M4 : LÝ THUYẾT THÔNG TIN & MÃ KHỐI TUYẾN TÍNH ======================= -->
+  <section class="mod" id="m4">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 7</span><span class="chip k">Bài 8</span><span class="chip">Shannon 1948 · Hamming 1950</span></div>
+      <h2>Mô hình Shannon: entropy, nén dữ liệu, kênh nhiễu và mã Hamming</h2>
+      <p class="lede">Đo lượng tin và entropy của nguồn; mã tiền tố, Shannon–Fano, Huffman, LZW; dung lượng kênh nhị phân đối xứng; mã tuyến tính với ma trận G, H, giải mã hội chứng; mã Hamming [7, 4] sửa lỗi trên kênh BSC và hệ mật McEliece thu nhỏ.</p>
+    </header>
+  </section>
+
+  <!-- ======================= M5 : MÃ CHẬP ======================= -->
+  <section class="mod" id="m5">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 9</span><span class="chip">van Tilborg ch. 7 · Viterbi 1967</span></div>
+      <h2>Mã chập và giải mã Viterbi</h2>
+      <p class="lede">Bộ mã hóa thanh ghi dịch (7, 5), bảng và sơ đồ trạng thái, lưới mã; khoảng cách tự do và bộ mã hóa thảm họa; giải mã Viterbi từng nhịp với metric đường và truy vết; mô phỏng tỷ lệ lỗi bit trên kênh nhiễu.</p>
+    </header>
+  </section>
+
+  <!-- ======================= M6 : LƯỢNG TỬ ======================= -->
+  <section class="mod" id="m6">
+    <header class="mhead">
+      <div class="chips"><span class="chip k">Bài 10</span><span class="chip">BB84 · Shor 1994 · FIPS 203–205</span></div>
+      <h2>Lượng tử: kính phân cực, qubit, BB84 và giải thuật Shor</h2>
+      <p class="lede">Thí nghiệm ba kính phân cực theo định luật Malus; đo qubit theo hai cơ sở; giao thức BB84 với kẻ nghe lén chặn – gửi lại và QBER; Shor quy phân tích thừa số về tìm chu kỳ, phân bố sau QFT và liên phân số; khuếch đại biên độ Grover.</p>
+    </header>
+  </section>
+
+  </main>
+</div>
+
+<script src="assets/core.js"></script>
+<script src="assets/m1.js"></script>
+<script src="assets/m2.js"></script>
+<script src="assets/m3.js"></script>
+<script src="assets/m4.js"></script>
+<script src="assets/m5.js"></script>
+<script src="assets/m6.js"></script>
+<script>
+LAB.boot([
+  { id: "m0", n: "00", title: "Trang chủ", lectures: "Giới thiệu và cách dùng" },
+  { id: "m1", n: "01", title: "Số học modulo & mật mã cổ điển", lectures: "Bài 1 · 2 · 3", chips: ["Bài 1", "Bài 2", "Bài 3"], blurb: "Z_n, Euler–Fermat, nghịch đảo modulo; Caesar, Affine, Vigenère, Hill, Playfair; phân tích tần suất; One-Time Pad, LCG, BBS, LFSR." },
+  { id: "m2", n: "02", title: "Mã khối: Feistel, S-DES, DES, AES", lectures: "Bài 4 · 5A", chips: ["Bài 4", "Bài 5"], blurb: "Giao thức ba bước; mạng Feistel; S-DES từng bước và hiệu ứng thác lũ; AES-128 trên vector FIPS-197; ECB và CBC." },
+  { id: "m3", n: "03", title: "Khóa công khai, băm, chữ ký số", lectures: "Bài 5B · 6", chips: ["Bài 5", "Bài 6"], blurb: "RSA và CRT; Diffie–Hellman và MITM; ElGamal; SHA-256, nghịch lý ngày sinh; chữ ký RSA, ElGamal, DSA và tái dùng k." },
+  { id: "m4", n: "04", title: "Entropy, nén, kênh BSC, mã Hamming", lectures: "Bài 7 · 8", chips: ["Bài 7", "Bài 8"], blurb: "Entropy và dư thừa; Shannon–Fano, Huffman, LZW; dung lượng kênh; ma trận G, H; giải mã hội chứng; Hamming [7, 4]; McEliece." },
+  { id: "m5", n: "05", title: "Mã chập & giải mã Viterbi", lectures: "Bài 9", chips: ["Bài 9"], blurb: "Bộ mã hóa (7, 5); sơ đồ trạng thái và lưới; khoảng cách tự do; Viterbi từng nhịp; mô phỏng BER." },
+  { id: "m6", n: "06", title: "Lượng tử: BB84 & Shor", lectures: "Bài 10", chips: ["Bài 10"], blurb: "Ba kính phân cực; qubit và phép đo; BB84 với Eve; Shor: chu kỳ, QFT, liên phân số; Grover." }
+]);
+</script>
+</body>
+</html>
